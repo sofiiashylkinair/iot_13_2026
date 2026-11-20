@@ -11,11 +11,11 @@ class RaceHorse:
         self.place_in_race = 0
 
     def get_name(self) -> str:
-        """Повертає ім'я коня."""
+        # Повертає ім'я коня.
         return self.name
 
     def get_speed(self) -> float:
-        """Повертає швидкість коня."""
+        # Повертає швидкість коня.
         return self.speed
 
     def __del__(self):
@@ -34,7 +34,7 @@ class RaceHorse:
 
 
 class Race:
-    """Клас, що описує перегони та керує списком коней-учасників."""
+    # Клас, що описує перегони та керує списком коней-учасників.
 
     def __init__(self, race_name: str):
         self.race_name = race_name
@@ -44,7 +44,7 @@ class Race:
         print(f"Перегони '{self.race_name}' завершено.")
 
     def add_horse(self, horse: RaceHorse):
-        """Додає коня до перегонів, якщо він підходить за віком і ще не зареєстрований."""
+        # Додає коня до перегонів, якщо він підходить за віком і ще не зареєстрований.
         if not (3 <= horse.age <= 7):
             print(
                 f"Кінь {horse.name} НЕ допущений "
@@ -60,7 +60,7 @@ class Race:
         print(f"Кінь {horse.name} допущений до перегонів.")
 
     def remove_horse(self, horse_name: str):
-        """Видаляє коня з перегонів та скидає його місце."""
+        # Видаляє коня з перегонів та скидає його місце.
         for horse in self.horses:
             if horse.name == horse_name:
                 horse.place_in_race = 0
@@ -70,12 +70,12 @@ class Race:
         print(f"Коня {horse_name} немає серед учасників.")
 
     def sort_by_speed(self):
-        """Сортує учасників за спаданням швидкості."""
+        # Сортує учасників за спаданням швидкості.
         self.horses.sort(key=lambda horse: horse.speed, reverse=True)
         print("Учасників посортовано за швидкістю.")
 
     def assign_places(self):
-        """Присвоює перші три місця після сортування за швидкістю."""
+        # Присвоює перші три місця після сортування за швидкістю.
         self.sort_by_speed()
         for i, horse in enumerate(self.horses):
             if i < 3:
@@ -84,7 +84,7 @@ class Race:
                 horse.place_in_race = 0
 
     def determine_winner(self):
-        """Визначає переможця з урахуванням середнього віку учасників."""
+        # Визначає переможця з урахуванням середнього віку учасників.
         if not self.horses:
             print("Немає учасників для визначення переможця.")
             return None
@@ -99,7 +99,7 @@ class Race:
         return winner
 
     def display(self):
-        """Виводить список учасників перегонів."""
+        # Виводить список учасників перегонів.
         print(f"\n--- Список учасників ({self.race_name}) ---")
         for horse in self.horses:
             print(horse)
@@ -107,7 +107,7 @@ class Race:
 
 
 def main():
-    """Демонструє роботу класів RaceHorse та Race."""
+    # Демонструє роботу класів RaceHorse та Race.
     race = Race("Великі Забіги")
 
     h1 = RaceHorse("Блискавка", 4, 65.5)
